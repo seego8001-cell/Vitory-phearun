@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>សាលាកុំព្យូទ័រ | Computer Academy</title>
+    <!-- Google Fonts for Khmer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300..700;1,300..700&family=Siemreap&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        khmer: ['"Kantumruy Pro"', 'Siemreap', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', 'Siemreap', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-khmer antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                        <i class="fa-solid fa-laptop-code text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold text-slate-900 tracking-tight block">សាលាកុំព្យូទ័រ</span>
+                        <span class="text-xs font-semibold text-blue-600 tracking-wider uppercase block -mt-1">Computer Academy</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 space-x-reverse items-center">
+                    <a href="#home" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">ទំព័រដើម</a>
+                    <a href="#courses" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">វគ្គសិក្សា</a>
+                    <a href="#why-us" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">អំពីយើង</a>
+                    <a href="#contact" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">ទំនាក់ទំនង</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center">
+                    <button onclick="openRegisterModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-xl shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transition-all duration-200">
+                        ចុះឈ្មោះឥឡូវនេះ
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-blue-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-blue-600 font-medium">ទំព័រដើម</a>
+            <a href="#courses" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-blue-600 font-medium">វគ្គសិក្សា</a>
+            <a href="#why-us" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-blue-600 font-medium">អំពីយើង</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-blue-600 font-medium">ទំនាក់ទំនង</a>
+            <button onclick="toggleMobileMenu(); openRegisterModal()" class="w-full mt-2 bg-blue-600 text-white py-2.5 rounded-xl font-medium shadow">
+                ចុះឈ្មោះឥឡូវនេះ
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white relative overflow-hidden py-20 lg:py-28">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -mb-12 -ml-12 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 space-x-reverse bg-blue-500/20 backdrop-blur-md border border-blue-400/30 px-4 py-2 rounded-full text-blue-200 text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+                        <span>បើកទទួលសិស្សថ្មីរៀងរាល់ដើមខែ!</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                        រៀនជំនាញកុំព្យូទ័រ និងបច្ចេកវិទ្យាដើរទាន់សម័យកាល
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        សាលាកុំព្យូទ័រ ផ្តល់ជូននូវវគ្គបណ្តុះបណ្តាលប្រកបដោយគុណភាពខ្ពស់ ជាមួយគ្រូបង្រៀនដែលមានបទពិសោធន៍ផ្ទាល់ និងការអនុវត្តគម្រោងជាក់ស្តែង ដើម្បីធានាថាអ្នកមានសមត្ថភាពពិតប្រាកដក្នុងទីផ្សារការងារ។
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#courses" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition text-center">
+                            មើលវគ្គសិក្សា <i class="fa-solid fa-arrow-down ml-2 text-sm"></i>
+                        </a>
+                        <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl border border-white/20 transition text-center">
+                            ទាក់ទងមកយើង
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Visual -->
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-lg bg-slate-900/80 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-md">
+                        <div class="flex items-center space-x-2 border-b border-slate-800 pb-4 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="text-xs text-slate-400 font-mono ml-2">sala-computer.edu.kh</span>
+                        </div>
+                        <div class="font-mono text-xs sm:text-sm text-slate-300 space-y-2">
+                            <p class="text-blue-400"><span class="text-pink-400">const</span> student = <span class="text-yellow-300">new</span> Student(<span class="text-emerald-400">'អ្នក'</span>);</p>
+                            <p class="text-blue-400"><span class="text-pink-400">await</span> student.learnSkills([</p>
+                            <p class="pl-4 text-emerald-300">'Web Development',</p>
+                            <p class="pl-4 text-emerald-300">'Python & Data',</p>
+                            <p class="pl-4 text-emerald-300">'UI/UX Design',</p>
+                            <p class="pl-4 text-emerald-300">'Cybersecurity'</p>
+                            <p class="text-blue-400">]);</p>
+                            <p class="text-slate-400">// សាងសង់អនាគតបច្ចេកវិទ្យារបស់អ្នកនៅទីនេះ ✨</p>
+                            <p class="text-yellow-400">student.getSuccessfulJob();</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-600 font-semibold tracking-wider uppercase text-sm">វគ្គសិក្សាពេញនិយម</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">ជ្រើសរើសជំនាញដែលអ្នកចូលចិត្ត</h2>
+                <p class="text-slate-600 mt-3">យើងមានវគ្គសិក្សាជាច្រើនកម្រិត ចាប់ពីកម្រិតដំបូង រហូតដល់កម្រិតជំនាញអាជីព</p>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="course-container">
+                <!-- Courses injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-600 font-semibold tracking-wider uppercase text-sm">ចំណុចខ្លាំងរបស់យើង</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">ហេតុអ្វីត្រូវជ្រើសរើស សាលាកុំព្យូទ័រ?</h2>
+                <p class="text-slate-600 mt-3">យើងប្តេជ្ញាផ្តល់នូវបទពិសោធន៍សិក្សាដ៏ល្អបំផុត ដើម្បីអនាគតការងារជោគជ័យរបស់អ្នក</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mx-auto text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">គ្រូបង្រៀនមានបទពិសោធន៍</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">សម្រិតសម្រាំងគ្រូបង្រៀនដែលមានបទពិសោធន៍ធ្វើការជាក់ស្តែងក្នុងវិស័យបច្ចេកវិទ្យា</p>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-code-commit"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">ការអនុវត្តជាក់ស្តែង</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">ផ្តោតលើការធ្វើគម្រោង (Projects) ជាក់ស្តែង ៨០% ដើម្បីបង្កើត Portfolio ខ្លួនឯង</p>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mx-auto text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">វិញ្ញាបនបត្រទទួលស្គាល់</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">ទទួលបានវិញ្ញាបនបត្របញ្ចប់ការសិក្សាដែលមានតម្លៃ និងការទទួលស្គាល់ពីស្ថាប័ន</p>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto text-2xl mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">ជំនួយក្នុងការស្វែងរកការងារ</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">ផ្តល់ការប្រឹក្សាយោបល់ បង្កើត Resume និងណែនាំការងារនៅតាមក្រុមហ៊ុនដៃគូ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm">ទំនាក់ទំនងយើងខ្ញុំ</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-6">មានសំណួរ ឬចង់ពិគ្រោះយោបល់?</h2>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
+                        ក្រុមការងាររបស់យើងរង់ចាំឆ្លើយតប និងផ្តល់ការប្រឹក្សាអំពីវគ្គសិក្សាដែលសមស្របបំផុតសម្រាប់លោកអ្នកដោយឥតគិតថ្លៃ។
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">អាសយដ្ឋាន</h4>
+                                <p class="text-slate-400 text-sm mt-1">អគារលេខ ១២៣, ផ្លូវសហព័ន្ធរុស្ស៊ី, សង្កាត់ទឹកល្អក់១, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">លេខទូរស័ព្ទ</h4>
+                                <p class="text-slate-400 text-sm mt-1">012 345 678 / 098 765 432</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">អ៊ីមែល</h4>
+                                <p class="text-slate-400 text-sm mt-1">info@salacomputer.edu.kh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact / Inquiry Form -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl">
+                    <h3 class="text-xl font-bold mb-6">ផ្ញើសារសាកសួរព័ត៌មាន</h3>
+                    <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">ឈ្មោះពេញ</label>
+                            <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition" placeholder="សូមបញ្ចូលឈ្មោះរបស់អ្នក">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">លេខទូរស័ព្ទ</label>
+                            <input type="tel" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition" placeholder="012 345 678">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">សាររបស់អ្នក</label>
+                            <textarea rows="4" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition" placeholder="តើអ្នកមានសំណួរអ្វីខ្លះ?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl shadow-lg shadow-blue-600/30 transition">
+                            ផ្ញើសារឥឡូវនេះ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-laptop-code text-sm"></i>
+                    </div>
+                    <span class="text-white font-bold">សាលាកុំព្យូទ័រ</span>
+                </div>
+                <p class="text-sm">© 2026 សាលាកុំព្យូទ័រ (Computer Academy). រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+                <div class="flex space-x-4 space-x-reverse text-lg">
+                    <a href="#" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" class="hover:text-red-500 transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-pink-500 transition"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Detail Modal -->
+    <div id="course-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transform transition-all">
+            <button onclick="closeCourseModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Modal dynamic details -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">ចុះឈ្មោះចូលរៀន</h3>
+            <p class="text-slate-600 text-sm mb-6">សូមបំពេញព័ត៌មានខាងក្រោមដើម្បីចុះឈ្មោះវគ្គសិក្សា</p>
+            
+            <form onsubmit="handleRegisterSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">ឈ្មោះពេញ *</label>
+                    <input type="text" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ឈ្មោះសិស្ស">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">លេខទូរស័ព្ទ *</label>
+                    <input type="tel" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="012 345 678">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">ជ្រើសរើសវគ្គសិក្សា *</label>
+                    <select id="register-course-select" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- សូមជ្រើសរើសវគ្គ --</option>
+                        <option value="web">Web Development</option>
+                        <option value="python">Python & Data Science</option>
+                        <option value="design">Graphic Design & UI/UX</option>
+                        <option value="office">Computer Basics & Office</option>
+                        <option value="network">Network & Cybersecurity</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl shadow-lg shadow-blue-600/30 transition">
+                    បញ្ជូនការចុះឈ្មោះ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Data and Functions -->
+    <script>
+        // Course Data
+        const courses = [
+            {
+                id: 'web',
+                title: 'Web Development',
+                titleKh: 'ការអភិវឌ្ឍន៍គេហទំព័រ',
+                icon: 'fa-code',
+                color: 'bg-blue-500',
+                tech: 'HTML5, CSS3, JavaScript, React.js, Tailwind CSS',
+                level: 'ដំបូង - មធ្យម',
+                duration: '៣ ខែ',
+                price: '$180',
+                description: 'រៀនបង្កើតគេហទំព័រទំនើប ស្រស់ស្អាត និង Responsive ដែលអាចដំណើរការបាននៅលើទូរស័ព្ទ និងកុំព្យូទ័រ ដោយប្រើប្រាស់បច្ចេកវិទ្យាចុងក្រោយបំផុត។'
+            },
+            {
+                id: 'python',
+                title: 'Python & Data Science',
+                titleKh: 'សរសេរកូដ Python និងទិន្នន័យ',
+                icon: 'fa-brands fa-python',
+                color: 'bg-emerald-500',
+                tech: 'Python Core, Pandas, NumPy, Data Analysis',
+                level: 'ដំបូង - ជម្រៅ',
+                duration: '៣ ខែ',
+                price: '$200',
+                description: 'សិក្សាភាសាកូដដែលពេញនិយមបំផុតសម្រាប់ការវិភាគទិន្នន័យ ការបង្កើតកម្មវិធី និងស្វ័យប្រវត្តិកម្ម (Automation)។'
+            },
+            {
+                id: 'design',
+                title: 'Graphic Design & UI/UX',
+                titleKh: 'ការរចនាក្រាហ្វិក និង UI/UX',
+                icon: 'fa-pen-nib',
+                color: 'bg-purple-500',
+                tech: 'Photoshop, Illustrator, Figma, UI/UX Design',
+                level: 'គ្រប់កម្រិត',
+                duration: '២ ខែ',
+                price: '$150',
+                description: 'រៀនរចនារូបភាពផ្សព្វផ្សាយ Logo និងបង្កើត Interface កម្មវិធីទូរស័ព្ទ/គេហទំព័រប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់។'
+            },
+            {
+                id: 'office',
+                title: 'Computer Basics & Office',
+                titleKh: 'កុំព្យូទ័រការិយាល័យ និងមូលដ្ឋានគ្រឹះ',
+                icon: 'fa-desktop',
+                color: 'bg-amber-500',
+                tech: 'Windows, Word, Excel, PowerPoint, Internet',
+                level: 'ដំបូង',
+                duration: '១.៥ ខែ',
+                price: '$90',
+                description: 'សមស្របបំផុតសម្រាប់អ្នកចាប់ផ្តើមដំបូង ដើម្បីចេះប្រៀបចំឯកសារ រៀបចំតារាងទិន្នន័យ Excel និងបទបង្ហាញផ្សេងៗ។'
+            },
+            {
+                id: 'network',
+                title: 'Network & Cybersecurity',
+                titleKh: 'បណ្តាញកុំព្យូទ័រ និងសុវត្ថិភាព',
+                icon: 'fa-shield-halved',
+                color: 'bg-rose-500',
+                tech: 'Networking Fundamentals, Router/Switch, Security',
+                level: 'មធ្យម',
+                duration: '៣ ខែ',
+                price: '$220',
+                description: 'យល់ដឹងពីការតភ្ជាប់បណ្តាញប្រព័ន្ធ Network ក្នុងក្រុមហ៊ុន និងការការពារប្រព័ន្ធពីការវាយប្រហារតាមអ៊ីនធឺណិត។'
+            }
+        ];
+
+        // Render Courses
+        function renderCourses() {
+            const container = document.getElementById('course-container');
+            container.innerHTML = courses.map(course => `
+                <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl ${course.color} text-white flex items-center justify-center text-2xl mb-5 shadow-lg">
+                            <i class="fa-solid ${course.icon}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">${course.titleKh}</h3>
+                        <p class="text-xs font-semibold text-blue-600 mb-3">${course.title}</p>
+                        <p class="text-slate-600 text-sm line-clamp-2 mb-4">${course.description}</p>
+                        
+                        <div class="space-y-2 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex justify-between">
+                                <span>កម្រិត៖</span>
+                                <span class="font-medium text-slate-800">${course.level}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>រយៈពេល៖</span>
+                                <span class="font-medium text-slate-800">${course.duration}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xl font-bold text-blue-600">${course.price}</span>
+                        <button onclick="openCourseModal('${course.id}')" class="text-sm bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-600 font-medium px-4 py-2 rounded-lg transition">
+                            មើលលម្អិត
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Course Modal Functions
+        function openCourseModal(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="w-12 h-12 rounded-xl ${course.color} text-white flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid ${course.icon}"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900">${course.titleKh}</h3>
+                <p class="text-sm text-blue-600 font-semibold mb-4">${course.title}</p>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">${course.description}</p>
+
+                <div class="bg-slate-50 p-4 rounded-xl space-y-2 text-sm mb-6">
+                    <div class="flex justify-between"><span class="text-slate-500">មេរៀនគ្របដណ្តប់៖</span> <span class="font-medium text-slate-800">${course.tech}</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">កម្រិតសិក្សា៖</span> <span class="font-medium text-slate-800">${course.level}</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">រយៈពេល៖</span> <span class="font-medium text-slate-800">${course.duration}</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">តម្លៃវគ្គសិក្សា៖</span> <span class="font-bold text-blue-600 text-base">${course.price}</span></div>
+                </div>
+
+                <button onclick="closeCourseModal(); openRegisterModal('${course.id}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-600/30">
+                    ចុះឈ្មោះវគ្គនេះ
+                </button>
+            `;
+
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('course-modal').classList.add('hidden');
+        }
+
+        // Register Modal Functions
+        function openRegisterModal(selectedCourseId = '') {
+            if (selectedCourseId) {
+                document.getElementById('register-course-select').value = selectedCourseId;
+            }
+            document.getElementById('register-modal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('register-modal').classList.add('hidden');
+        }
+
+        // Form Handlers
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            alert('សូមអរគុណសម្រាប់ការចុះឈ្មោះ! ក្រុមការងារសាលានឹងទាក់ទងទៅកាន់លោកអ្នកក្នុងពេលឆាប់ៗនេះ។');
+            closeRegisterModal();
+        }
+
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            alert('សាររបស់លោកអ្នកត្រូវបានផ្ញើដោយជោគជ័យ! សូមអរគុណ។');
+            e.target.reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const courseModal = document.getElementById('course-modal');
+            const registerModal = document.getElementById('register-modal');
+            if (event.target === courseModal) closeCourseModal();
+            if (event.target === registerModal) closeRegisterModal();
+        }
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+        });
+    </script>
+</body>
+</html>
